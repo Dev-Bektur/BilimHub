@@ -6,8 +6,8 @@ import './LessonPage.css'
 function Lessons() {
   return (
     <div className='lessonPage'>
-      <Link to="/watchLesson" className='toTheLesson'>Уроки</Link>
-      <Link to="/homework" className='toTheHomework'>Домашние задания</Link>
+      <Link to="/subject" className='toTheLesson'>Уроки</Link>
+      <Link to="/newSubject" className='toTheHomework'>Домашние задания</Link>
     </div>
   )
 }

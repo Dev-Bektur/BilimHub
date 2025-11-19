@@ -15,6 +15,11 @@ import KyrgyzTest from "./pages/KyrgyzTest";
 import Admin from "./pages/Admin";
 import LessonWatch from "./pages/LessonWatch";
 import Homeworks from "./pages/Homeworks";
+import ChatBot from "./pages/ChatBot";
+import PlanFromAI from "./pages/PlanFromAI";
+import Subject from "./pages/Subject";
+import SubjectHw from "./pages/SubjectHw";
+import FirstLesson from "./pages/LessonList/FirstLesson";
 
 const myRouter = createBrowserRouter([
     {
@@ -80,6 +85,26 @@ const myRouter = createBrowserRouter([
             {
                 path: "homework",
                 element: <Homeworks/>
+            },
+            {
+                path: "chatBot",
+                element: <ChatBot/>
+            },
+            {
+                path: "aiPlan",
+                element: <PlanFromAI/>
+            },
+            {
+                path: "subject",
+                element: <Subject/>
+            },
+            {
+                path: "newSubject",
+                element: <SubjectHw/>
+            },
+            {
+                path: "firstLesson",
+                element: <FirstLesson/>
             }
         ]
     }

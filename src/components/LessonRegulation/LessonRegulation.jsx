@@ -50,8 +50,9 @@ function LessonRegulation() {
 
   return (
     <div className="lessonRegulation-wrapper">
-
+<h1>График обучения</h1>
       <div className='lessonRegulation'>
+        
         {lessons.map((item, index) => (
           <div
             key={index}

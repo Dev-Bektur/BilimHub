@@ -3,10 +3,13 @@ import './Header.css'
 import { Link, NavLink } from 'react-router-dom'
 import logo from '../../assets/image/logo.png'
 import { FiMenu, FiX, FiUser } from "react-icons/fi"
+import { useTranslation } from 'react-i18next'
+
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('user'))
   const [menuOpen, setMenuOpen] = useState(false)
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -17,11 +20,15 @@ function Header() {
     window.addEventListener('storage', handleStorageChange)
     window.addEventListener('userChange', handleStorageChange)
 
+  
+
     return () => {
       window.removeEventListener('storage', handleStorageChange)
       window.removeEventListener('userChange', handleStorageChange)
     }
   }, [])
+
+  const change = (e) => i18n.changeLanguage(e.target.value)
 
   return (
     <header>
@@ -31,21 +38,21 @@ function Header() {
         </div>
 
         <nav className='navigation'>
-          <NavLink to="/">Главная</NavLink>
-          <NavLink to="/test">Тесты</NavLink>
-          <NavLink to="/lesson">Уроки</NavLink>
-          <NavLink to="/university">Университеты</NavLink>
-          <NavLink to="/about">О нас</NavLink>
-          <NavLink to="/qa">Вопрос-ответ</NavLink>
-          <NavLink to="/contact">Контакты</NavLink>
+          <NavLink to="/">{t("main")}</NavLink>
+          <NavLink to="/test">{t("test")}</NavLink>
+          <NavLink to="/lesson">{t("lesson")}</NavLink>
+          <NavLink to="/university">{t("uni")}</NavLink>
+          <NavLink to="/about">{t("about")}</NavLink>
+          <NavLink to="/qa">{t("qa")}</NavLink>
+          <NavLink to="/contact">{t("contact")}</NavLink>
         </nav>
       </div>
 
       {/* Desktop right */}
       <div className='head-right'>
-        <select>
-          <option value="kg">KGZ</option>
+        <select onChange={change}>
           <option value="ru">RUS</option>
+          <option value="kg">KGZ</option>
         </select>
 
         {isLoggedIn ? (
@@ -70,17 +77,17 @@ function Header() {
       {/* MOBILE MENU */}
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
         <nav>
-          <NavLink onClick={() => setMenuOpen(false)} to="/">Главная</NavLink>
-          <NavLink onClick={() => setMenuOpen(false)} to="/test">Тесты</NavLink>
-          <NavLink onClick={() => setMenuOpen(false)} to="/lesson">Уроки</NavLink>
-          <NavLink onClick={() => setMenuOpen(false)} to="/university">Университеты</NavLink>
-          <NavLink onClick={() => setMenuOpen(false)} to="/about">О нас</NavLink>
-          <NavLink onClick={() => setMenuOpen(false)} to="/qa">Вопрос-ответ</NavLink>
-          <NavLink onClick={() => setMenuOpen(false)} to="/contact">Контакты</NavLink>
+          <NavLink onClick={() => setMenuOpen(false)} to="/">{t("main")}</NavLink>
+          <NavLink onClick={() => setMenuOpen(false)} to="/test">{t("test")}</NavLink>
+          <NavLink onClick={() => setMenuOpen(false)} to="/lesson">{t("lesson")}</NavLink>
+          <NavLink onClick={() => setMenuOpen(false)} to="/university">{t("uni")}</NavLink>
+          <NavLink onClick={() => setMenuOpen(false)} to="/about">{t("about")}</NavLink>
+          <NavLink onClick={() => setMenuOpen(false)} to="/qa">{t("qa")}</NavLink>
+          <NavLink onClick={() => setMenuOpen(false)} to="/contact">{t("contact")}</NavLink>
         </nav>
 
         <div className="mobile-bottom">
-          <select>
+          <select onChange={change}>
             <option value="kg">KGZ</option>
             <option value="ru">RUS</option>
           </select>

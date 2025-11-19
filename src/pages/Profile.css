@@ -1,0 +1,54 @@
+.userPage{
+    position: relative;
+    font-family: Manrope;
+}
+
+.ai-plan-card {
+    width: 100%;
+    max-width: 380px;
+    background-color: white;
+    border: 1px solid #d0d7e3;
+    border-radius: 14px;
+    padding: 15px 18px;
+    gap: 14px;
+    text-decoration: none;
+
+    box-shadow: 0 4px 18px rgba(36, 99, 235, 0.08);
+    transition: 0.25s ease;
+    
+    position: absolute;
+    top: 174px;
+    right: 200px;
+}
+
+.ai-plan-card:hover {
+    transform: scale(0.98);
+    box-shadow: 0 4px 22px rgba(36, 99, 235, 0.15);
+    border-color: #2463EB;
+}
+
+.ai-icon img {
+    width: 48px;
+    height: 48px;
+    background-color: white;
+}
+.ai-icon{
+    background-color: white;
+}
+
+.ai-text h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    background-color: white;
+    padding-bottom: 20px;
+}
+
+.ai-text p {
+    margin: 0;
+    font-size: 14px;
+    color: #64748b;
+    background-color: white;
+    padding-top: 10px;
+}

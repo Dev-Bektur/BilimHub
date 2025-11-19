@@ -4,7 +4,7 @@
   margin: 0 auto;
   background-color: #2463EB;
   border-radius: 20px;
-  
+  font-family: Manrope;
 }
 
 .blue-card {
@@ -19,7 +19,6 @@
 
 .text h1 {
     background-color: #2463EB;
-  font-family: "Montserrat", sans-serif;
   font-size: 36px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -31,7 +30,6 @@
 }
 
 .text p {
-  font-family: "Inter", sans-serif;
   font-size: 18px;
   margin-bottom: 30px;
   color: #e5f3ff;
@@ -46,7 +44,6 @@
 
 .create-btn,
 .learn-btn {
-  font-family: "Inter", sans-serif;
   font-size: 16px;
   padding: 12px 26px;
   border-radius: 10px;
@@ -81,7 +78,6 @@
   display: flex;
   align-items: center;
   color: #e0f3ff;
-  font-family: "Inter", sans-serif;
   font-size: 15px;
   background-color: #2463EB;
   gap: 5px;

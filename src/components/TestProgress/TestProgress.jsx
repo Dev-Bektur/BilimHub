@@ -5,21 +5,36 @@ function TestProgress() {
   const [results, setResults] = useState({})
   const [animatedValues, setAnimatedValues] = useState({})
 
+  // Функция получения цвета по проценту
+  const getColor = (value) => {
+    if (value < 30) return "#d93434"       // тёмно-красный
+    if (value < 70) return "#d9a834"       // тёмно-жёлтый
+    return "#38a169"                       // тёмно-зелёный
+  }
+
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("testResults")) || {}
-    setResults(saved)
+    const loadResults = () => {
+      const saved = JSON.parse(localStorage.getItem("testResults")) || {}
+      setResults(saved)
 
-    // Анимация
-    const timers = []
-    Object.keys(saved).forEach(subject => {
-      setAnimatedValues(prev => ({ ...prev, [subject]: 0 }))
-      const timer = setTimeout(() => {
-        setAnimatedValues(prev => ({ ...prev, [subject]: saved[subject] }))
-      }, 150)
-      timers.push(timer)
-    })
+      // Анимация
+      Object.keys(saved).forEach(subject => {
+        setAnimatedValues(prev => ({ ...prev, [subject]: 0 }))
+        setTimeout(() => {
+          setAnimatedValues(prev => ({
+            ...prev,
+            [subject]: saved[subject]
+          }))
+        }, 150)
+      })
+    }
 
-    return () => timers.forEach(t => clearTimeout(t))
+    loadResults()
+
+    // Слушаем изменения localStorage в реальном времени
+    window.addEventListener("storage", loadResults)
+
+    return () => window.removeEventListener("storage", loadResults)
   }, [])
 
   return (
@@ -30,21 +45,28 @@ function TestProgress() {
         <p className="empty">Вы пока не проходили тесты.</p>
       )}
 
-      {Object.keys(results).map(subject => (
-        <div key={subject} className="progress-item">
-          <div className="progress-header">
-            <p>{subject}</p>
-            <p>{animatedValues[subject] || 0}%</p>
-          </div>
+      {Object.keys(results).map(subject => {
+        const value = animatedValues[subject] || 0
 
-          <div className="progress-bar">
-            <div
-              className="progress-fill"
-              style={{ width: `${animatedValues[subject] || 0}%` }}
-            ></div>
+        return (
+          <div key={subject} className="progress-item">
+            <div className="progress-header">
+              <p>{subject}</p>
+              <p>{value}%</p>
+            </div>
+
+            <div className="progress-bar">
+              <div
+                className="progress-fill"
+                style={{
+                  width: `${value}%`,
+                  backgroundColor: getColor(value)
+                }}
+              ></div>
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </div>
   )
 }

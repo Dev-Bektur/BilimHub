@@ -28,6 +28,10 @@ function User() {
           <p>{userData.email}</p>
           <p>{userData.phone}</p>
         </div>
+        
+      <button className='logoutButton' onClick={handleLogout}>
+        Выйти
+      </button>
       </div>
 
       <div className='myRating'>
@@ -38,9 +42,6 @@ function User() {
         
       </div>
 
-      <button className='logoutButton' onClick={handleLogout}>
-        Выйти
-      </button>
     </div>
   )
 }

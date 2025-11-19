@@ -1,0 +1,95 @@
+.subjectList {
+  width: 900px;
+  margin: 20px auto;
+  list-style: none;
+  font-family: Manrope;
+}
+.subjectList ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.subjectList ul li {
+  width: 250px;
+  height: 200px;
+  font-size: 20px;
+  color: #1f2937;
+  border-radius: 10px;
+  display: flex;
+  justify-content: start;
+  align-items: end;
+  padding: 0 0 35px 30px;
+  transition: all 0.5s ease-in-out;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* ✨ Уникальные задержки для плавного появления */
+.subjectList ul li:nth-child(1) { animation-delay: 0.2s; }
+.subjectList ul li:nth-child(2) { animation-delay: 0.4s; }
+.subjectList ul li:nth-child(3) { animation-delay: 0.6s; }
+.subjectList ul li:nth-child(4) { animation-delay: 0.8s; }
+.subjectList ul li:nth-child(5) { animation-delay: 1s; }
+.subjectList ul li:nth-child(6) { animation-delay: 1.2s; }
+.subjectList ul li:nth-child(7) { animation-delay: 1.4s; }
+.subjectList ul li:nth-child(8) { animation-delay: 1.6s; }
+
+.subjectList ul li a {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: end;
+  padding: 35px 30px;
+}
+
+/* 🎨 Цвета карточек */
+.math { background-color: #c7d2fe; }
+.eng { background-color: #fbcfe8; }
+.rus { background-color: #fde68a; }
+.kgz { background-color: #bbf7d0; }
+.kgz1 { background-color: #ffc374; }
+.chemistry { background-color: #bae6fd; }
+.biology { background-color: #fef9c3; }
+.physics { background-color: #bfdbfe; }
+
+/* 🌈 Ховеры */
+.subjectList ul li:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  opacity: 0.95;
+}
+
+.subjectList ul li.math:hover { background-color: #a5b4fc; color: white; }
+.subjectList ul li.physics:hover { background-color: #93c5fd; color: white;}
+.subjectList ul li.chemistry:hover { background-color: #7dd3fc; color: white;}
+.subjectList ul li.biology:hover { background-color: #fde047; color: white;}
+.subjectList ul li.eng:hover { background-color: #f472b6; color: white;}
+.subjectList ul li.rus:hover { background-color: #facc15; color: white;}
+.subjectList ul li.kgz:hover { background-color: #86efac; color: white;}
+.subjectList ul li.kgz1:hover { background-color: #ff9a16; color: white;}
+
+
+@media(max-width:425px){
+  .subjectList{
+    width: 425px;
+  }
+  .subjectList ul {
+    width: 400px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    margin-left: 13px;
+  }
+  .subjectList ul li {
+    width: 160px;
+    height: 110px;
+    font-size: 16px;
+  }
+}

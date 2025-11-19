@@ -8,7 +8,7 @@ function LessonWatch() {
     <div className='watchLesson'>
       <h1>Уроки</h1>
       <div className='lessonList'>
-        <Link>Урок №1</Link>
+        <Link to="/firstLesson">Урок №1</Link>
         <Link>Урок №2</Link>
         <Link>Урок №3</Link>
         <Link>Урок №4</Link>
