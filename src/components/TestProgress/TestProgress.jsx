@@ -5,11 +5,11 @@ function TestProgress() {
   const [results, setResults] = useState({})
   const [animatedValues, setAnimatedValues] = useState({})
 
-  // Функция получения цвета по проценту
+
   const getColor = (value) => {
-    if (value < 30) return "#d93434"       // тёмно-красный
-    if (value < 70) return "#d9a834"       // тёмно-жёлтый
-    return "#38a169"                       // тёмно-зелёный
+    if (value < 30) return "#d93434"       
+    if (value < 70) return "#d9a834"       
+    return "#38a169"                       
   }
 
   useEffect(() => {

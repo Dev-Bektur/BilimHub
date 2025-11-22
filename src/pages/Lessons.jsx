@@ -2,12 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import './LessonPage.css'
+import { useTranslation } from 'react-i18next'
 
 function Lessons() {
+  const {t} = useTranslation();
   return (
     <div className='lessonPage'>
-      <Link to="/subject" className='toTheLesson'>Уроки</Link>
-      <Link to="/newSubject" className='toTheHomework'>Домашние задания</Link>
+      <Link to="/subject" className='toTheLesson'>{t("lesson")}</Link>
+      <Link to="/newSubject" className='toTheHomework'>{t("hw")}</Link>
     </div>
   )
 }

@@ -197,14 +197,29 @@ function MathTest() {
   };
 
   const finishTest = () => {
-    let s = 0;
-    answers.forEach((ans, i) => {
-      if (ans === questions[i].answer) s++;
-    });
-    setScore(s);
-    setFinished(true);
-    localStorage.setItem("math_score", s);
+  let s = 0;
+  answers.forEach((ans, i) => {
+    if (ans === questions[i].answer) s++;
+  });
+
+  setScore(s);
+  setFinished(true);
+
+  // Старое сохранение (если ты его используешь)
+  localStorage.setItem("math_score", s);
+
+  // ✔ Новое сохранение истории, которое нужно для списка тестов
+  const history = JSON.parse(localStorage.getItem("testHistory")) || {};
+
+  history["math"] = {
+    date: new Date().toLocaleDateString(),
+    correct: s,
+    total: questions.length
   };
+
+  localStorage.setItem("testHistory", JSON.stringify(history));
+};
+
 
   const formatTime = (sec) => {
     const m = Math.floor(sec / 60);
@@ -272,6 +287,7 @@ function MathTest() {
     </div>
   );
 }
+
 
 export default MathTest;
 

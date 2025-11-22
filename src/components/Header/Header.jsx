@@ -58,13 +58,13 @@ function Header() {
         {isLoggedIn ? (
           <Link to="/profile">
             <button className='user'>
-             Личный кабинет
+             {t("profile")}
             </button>
           </Link>
         ) : (
           <>
-            <Link to="/register"><button className='reg'>Регистрация</button></Link>
-            <Link to="/login"><button className='login'>Войти</button></Link>
+            <Link to="/register"><button className='reg'>{t("reg")}</button></Link>
+            <Link to="/login"><button className='login'>{t("log")}</button></Link>
           </>
         )}
       </div>

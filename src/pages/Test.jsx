@@ -1,21 +1,53 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Test.css'
-
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next';
 
 function Test() {
+  const {t} = useTranslation();
+  const [savedResults, setSavedResults] = useState({})
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("testHistory")) || {}
+    setSavedResults(data)
+  }, [])
+
+  const tests = [
+    { name: "Математика", path: "/math", key: "math" },
+    { name: "Русский язык", path: "/rus", key: "rus" },
+    { name: "Кыргызский тил(аналогия)", path: "/kyrgyz", key: "kyrgyz" },
+    { name: "Окуу жана түшүнүү(чтение и понимание)", path: "/kyrgyz_read", key: "kyrgyz_read" },
+    { name: "English", path: "/eng", key: "eng" },
+    { name: "Химия", path: "/chemistry", key: "chemistry" },
+    { name: "Биология", path: "/biology", key: "biology" },
+    { name: "Физика", path: "/physics", key: "physics" }
+  ]
+
   return (
     <div className='testPage'>
-      <h1>Тесты</h1>
+      <h1>{t("test")}</h1>
+      
       <ul>
-        <Link to="/math"><li className='math'>Математика</li></Link>
-        <Link><li className='rus'>Русский язык</li></Link>
-        <Link to="/kyrgyz"><li className='kgz'>Кыргызский язык(аналогия)</li></Link>
-        <Link><li className='kgz1'>Кыргызский язык(чтение и понимание)</li></Link>
-        <Link><li className='eng'>Английский язык</li></Link>
-        <Link><li className='chemistry'>Химия</li></Link>
-        <Link><li className='biology'>Биология</li></Link>
-        <Link><li className='physics'>Физика</li></Link>
+        {tests.map(test => {
+          const info = savedResults[test.key] || null
+
+          return (
+            <Link to={test.path} key={test.key}>
+              <li className={test.key}>
+                
+                {/* Если были попытки — показываем маленький блок статистики */}
+                {info && (
+                  <div className="test-info-badge">
+                    <p>📅 {info.date}</p>
+                    <p>✔ {info.correct}/{info.total}</p>
+                  </div>
+                )}
+
+                {test.name}
+              </li>
+            </Link>
+          )
+        })}
       </ul>
     </div>
   )

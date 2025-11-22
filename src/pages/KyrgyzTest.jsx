@@ -246,9 +246,29 @@ function KyrgyzTest() {
   };
 
   const finishTest = () => {
-    setFinished(true);
-    localStorage.setItem("kyrgyz_score", score);
+  let s = 0;
+  answers.forEach((ans, i) => {
+    if (ans === questions[i].answer) s++;
+  });
+
+  setScore(s);
+  setFinished(true);
+
+  // Старое сохранение (если ты его используешь)
+  localStorage.setItem("kyrgyz_score", s);
+
+  // ✔ Новое сохранение истории, которое нужно для списка тестов
+  const history = JSON.parse(localStorage.getItem("testHistory")) || {};
+
+  history["kyrgyz"] = {
+    date: new Date().toLocaleDateString(),
+    correct: s,
+    total: questions.length
   };
+
+  localStorage.setItem("testHistory", JSON.stringify(history));
+};
+
 
   if (finished) {
     return (
@@ -291,5 +311,7 @@ function KyrgyzTest() {
     </div>
   );
 }
+
+
 
 export default KyrgyzTest;

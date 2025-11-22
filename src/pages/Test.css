@@ -14,7 +14,7 @@
 
 .testPage ul {
   width: 900px;
-  margin: 0 auto;
+  margin: 0 auto; 
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -38,6 +38,8 @@
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.8s ease forwards;
+  position: relative;
+  margin-bottom: 14px;
 }
 
 /* ✨ Уникальные задержки для плавного появления */
@@ -50,26 +52,18 @@
 .testPage ul li:nth-child(7) { animation-delay: 1.4s; }
 .testPage ul li:nth-child(8) { animation-delay: 1.6s; }
 
-.testPage ul li a {
-  text-decoration: none;
-  color: inherit;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: start;
-  align-items: end;
-  padding: 35px 30px;
-}
+
 
 /* 🎨 Цвета карточек */
-.math { background-color: #c7d2fe; }
-.eng { background-color: #fbcfe8; }
-.rus { background-color: #fde68a; }
-.kgz { background-color: #bbf7d0; }
-.kgz1 { background-color: #ffc374; }
-.chemistry { background-color: #bae6fd; }
-.biology { background-color: #fef9c3; }
-.physics { background-color: #bfdbfe; }
+.testPage ul li.math { background-color: #c7d2fe !important; }
+.testPage ul li.eng { background-color: #fbcfe8 !important; }
+.testPage ul li.rus { background-color: #fde68a !important; }
+.testPage ul li.kyrgyz { background-color: #bbf7d0 !important; }
+.testPage ul li.kyrgyz_read { background-color: #ffc374 !important; }
+.testPage ul li.chemistry { background-color: #bae6fd !important; }
+.testPage ul li.biology { background-color: #fef9c3 !important; }
+.testPage ul li.physics { background-color: #bfdbfe !important; }
+
 
 /* 🌈 Ховеры */
 .testPage ul li:hover {
@@ -84,8 +78,29 @@
 .testPage ul li.biology:hover { background-color: #fde047; color: white;}
 .testPage ul li.eng:hover { background-color: #f472b6; color: white;}
 .testPage ul li.rus:hover { background-color: #facc15; color: white;}
-.testPage ul li.kgz:hover { background-color: #86efac; color: white;}
-.testPage ul li.kgz1:hover { background-color: #ff9a16; color: white;}
+.testPage ul li.kyrgyz:hover { background-color: #86efac; color: white;}
+.testPage ul li.kyrgyz_read:hover { background-color: #ff9a16; color: white;}
+
+
+/* Бейдж информации */
+.test-info-badge {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.5s ease-in-out;
+}
+
+.test-info-badge p {
+  margin: 0;
+}
+.testPage ul li:hover .test-info-badge{
+  color: green;
+}
+
 
 /* 🪶 Плавное появление снизу */
 @keyframes fadeInUp {
