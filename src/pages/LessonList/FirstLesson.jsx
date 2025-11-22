@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import './LessonList.css'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 function FirstLesson() {
+  const {t} = useTranslation();
   // новое состояние — открыта ли форма вопроса
   const [questionOpen, setQuestionOpen] = useState(false)
   const [questionText, setQuestionText] = useState("")
@@ -22,8 +24,8 @@ function FirstLesson() {
 
   return (
     <div className='lessonListPage'>
-      <h1>Урок №1</h1>
-      <p>Тема: Натуральные числа</p>
+      <h1>{t("lesson1")} №1</h1>
+      <p>Тема: {t("naturalNumber")}</p>
 
       <iframe 
         className='video' 
@@ -39,8 +41,8 @@ function FirstLesson() {
       <textarea name="Заметки" className='zametki'></textarea>
 
       <div className='lessonBtns'>
-        <Link to="/contact"><button>Я не понял тему</button></Link>
-        <button>Закрепить тему</button>  
+        <Link to="/contact"><button>{t("misunderstand")}</button></Link>
+        <button>{t("review")}</button>  
       </div>
 
       {/* Кнопка открытия блока вопросов */}
@@ -48,7 +50,7 @@ function FirstLesson() {
         className='doYouHaveQues'
         onClick={() => setQuestionOpen(!questionOpen)}
       >
-        У вас есть вопросы?
+        {t("doYouHaveQ")}
       </button>
 
       {/* Блок вопросов */}
@@ -62,7 +64,7 @@ function FirstLesson() {
           ></textarea>
 
           <button className="sendQuestionBtn" onClick={handleSend}>
-            Отправить
+            {t("send")}
           </button>
         </div>
       )}

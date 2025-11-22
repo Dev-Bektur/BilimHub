@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './QAPage.css';
+import { useTranslation } from 'react-i18next';
 
 function QAPage() {
+  const {t} = useTranslation();
 
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -22,20 +24,18 @@ function QAPage() {
       answer: (
         <div>
           <p>
-            Все абитуриенты сдают основной тест, который состоит из разделов:
-            Математика, Чтение и понимание текста, Аналогии, Практическая
-            грамматика родного языка.
+            {t("text16")}
           </p>
-          <p>Абитуриенты могут выбрать один или несколько предметных тестов:</p>
+          <p>{t("text17")}</p>
           <ul className="test-list">
             <li>Химия</li>
             <li>Биология</li>
             <li>Физика</li>
             <li>Математика</li>
-            <li>История</li>
-            <li>Английский язык</li>
-            <li>Кыргызский язык и литература</li>
-            <li>Русский язык и литература</li>
+            <li>{t("history")}</li>
+            <li>{t("eng")}</li>
+            <li>{t("kgz")}</li>
+            <li>{t("rus")}</li>
           </ul>
         </div>
       ),

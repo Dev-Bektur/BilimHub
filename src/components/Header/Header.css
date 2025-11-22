@@ -11,6 +11,11 @@ header{
     padding: 30px 40px 40px 40px;
     margin-bottom: 30px;
     font-family: Manrope;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
 
 .head-left{
